@@ -850,7 +850,7 @@ block style-property-name-dart-diff
 :marked
   <a id="ngModel"></a>
   ## Two-way binding with NgModel
-  When developing data entry forms, we often want to both display a data property and update that property when the user makes changes.
+  When developing data entry forms, we often want to, both, display a data property and update that property when the user makes changes.
 
   The `[(ngModel)]` two-way data binding syntax makes that easy. Here's an example:
 +makeExample('template-syntax/ts/app/app.component.html', 'NgModel-1')(format=".")
@@ -862,33 +862,33 @@ block style-property-name-dart-diff
   Alternatively, we can use the canonical prefix form:
 +makeExample('template-syntax/ts/app/app.component.html', 'NgModel-2')(format=".")
 :marked
-  There’s a story behind this construction, a story that builds on the property and event binding techniques we learned previously.
+  There’s a story behind this construction, a story that builds on the property and event binding techniques learned previously.
 
   ### Inside [(ngModel)]
-  We could have achieved the same result with separate bindings to
+   The same result could be achieved with separate bindings to
   the `<input>` element's  `value` property and `input` event.
 +makeExample('template-syntax/ts/app/app.component.html', 'without-NgModel')(format=".")
 :marked
-  That’s cumbersome. Who can remember which element property to set and what event reports user changes?
-  How do we extract the currently displayed text from the input box so we can update the data property?
-  Who wants to look that up each time?
+  However, that is cumbersome and it is difficult to remember which element property to set and what event reports user changes.
+  Moreoever, how do we extract the currently displayed text from the input box so we can update the data property?
+  And, who would want to look that up each time?
 
   That `ngModel` directive hides these onerous details behind its own  `ngModel` input and `ngModelChange` output properties.
 +makeExample('template-syntax/ts/app/app.component.html', 'NgModel-3')(format=".")
 .l-sub-section
   :marked
-    The `ngModel` input property sets the element's value property and the `ngModelChange` output property
+    The `ngModel` input property sets the element's value property while the `ngModelChange` output property
     listens for changes to the element's value.
-    The details are specific to each kind of element and therefore the `NgModel` directive only works for elements,
-    such as the input text box, that are supported by a [ControlValueAccessor](../api/common/index/ControlValueAccessor-interface.html).
+    The details are specific to each kind of element and therefore the `NgModel` directive only works for elements 
+    that are supported by a [ControlValueAccessor](../api/common/index/ControlValueAccessor-interface.html), such as the input text box.
     We can't apply `[(ngModel)]` to our custom components until we write a suitable *value accessor*,
     a technique that is beyond the scope of this chapter.
 
 :marked
-  Separate `ngModel` bindings is an improvement. We can do better.
+  Separate `ngModel` bindings are an improvement. We can do better.
 
   We shouldn't have to mention the data property twice. Angular should be able to capture the component’s data property and set it
-  with a single declaration &mdash; which it can with the `[( )]` syntax:
+  with a single declaration &mdash; which can be done with the `[( )]` syntax:
 +makeExample('template-syntax/ts/app/app.component.html', 'NgModel-1')(format=".")
 
 .l-sub-section
@@ -906,12 +906,12 @@ block style-property-name-dart-diff
   Is `[(ngModel)]` all we need? Is there ever a reason to fall back to its expanded form?
 
   The `[( )]` syntax can only _set_ a data-bound property.
-  If we need to do something more or something different, we need to write the expanded form ourselves.
+  If we need to do something more or different, we need to write the expanded form ourselves.
 
   Let's try something silly like forcing the input value to uppercase:
 +makeExample('template-syntax/ts/app/app.component.html', 'NgModel-4')(format=".")
 :marked
-  Here are all variations in action, including the uppercase version:
+  Here are all the variations in action, including the uppercase version:
 figure.image-display
     img(src='/resources/images/devguide/template-syntax/ng-model-anim.gif' alt="NgModel variations")
 
@@ -1239,13 +1239,13 @@ figure.image-display
 :marked
   ### Referencing a template reference variable
 
-  We can reference a template reference variable on the same element, on a sibling element, or on
+  We can reference a template reference variable on the same element, a sibling element, or 
   any child elements.
 
   Here are two other examples of creating and consuming a Template reference variable:
 +makeExample('template-syntax/ts/app/app.component.html', 'ref-phone')(format=".")
 :marked
-  The hash (`#`) prefix to "phone" means that we're defining a `phone` variable.
+  The hash (`#`) prefix to "phone" indicates that we're defining a `phone` variable.
 .l-sub-section
   :marked
     Folks who don't like using the `#` character can use its canonical alternative,
@@ -1256,13 +1256,13 @@ figure.image-display
   ### How a variable gets its value
 
   Angular sets the variable's value to the element on which it was defined.
-  We defined these variables on the `input` elements.
+  These variables are defined on the `input` elements.
   We’re passing those `input` element objects across to the
   button elements, where they're used in arguments to the `call` methods in the event bindings.
 
 :marked
   ### NgForm and template reference variables
-  Let's look at one final example: a form, the poster child for template reference variables.
+  Let's look at one final example: a form, also known as the poster child for template reference variables.
 
   The HTML for a form can be quite involved, as we saw in the [Forms](forms.html) chapter.
   The following is a *simplified* example &mdash; and it's not simple at all.
@@ -1274,9 +1274,8 @@ figure.image-display
 :marked
   What is the value of `theForm`?
 
-  It would be the [HTMLFormElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement)
-  if Angular hadn't taken it over.
-  It's actually `ngForm`, a reference to the Angular built-in `NgForm` directive that wraps the native `HTMLFormElement`
+  If Angular hadn't taken over, then it would be the [HTMLFormElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement).
+  It is actually `ngForm`, a reference to the Angular built-in `NgForm` directive that wraps the native `HTMLFormElement`
   and endows it with additional superpowers such as the ability to
   track the validity of user input.
 
